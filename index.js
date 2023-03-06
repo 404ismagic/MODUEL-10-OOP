@@ -125,7 +125,7 @@ function addTeamMembers()
         addIntern();
         break;
       default:
-        fs.createReadStream();
+        createTeam();
         break;
     }
   })
