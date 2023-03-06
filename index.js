@@ -35,6 +35,56 @@ const mgrQuestions = [
    
 ];
 
+const engruestions = [
+  {
+      type: 'input',
+      name: 'Engineer-Name',
+      message: 'What is Engineers Name',
+    },
+    {
+      type: 'input',
+      name: 'Engineer-ID',
+      message: 'What is your Engineers ID',
+    },
+    {
+      type: 'input',
+      name: 'Engineer-Email',
+      message: 'What is your Engineers email?',
+    },
+    {
+      type: 'input',
+      name: 'Engineer-Github',
+      message: 'What is Engineers Github',
+    },
+   
+ 
+];
+
+const internQuestions = [
+  {
+      type: 'input',
+      name: 'Intern-Name',
+      message: 'What is Interns Name',
+    },
+    {
+      type: 'input',
+      name: 'Intern-ID',
+      message: 'What is your Interns ID',
+    },
+    {
+      type: 'input',
+      name: 'Intern-Email',
+      message: 'What is your Interns email?',
+    },
+    {
+      type: 'input',
+      name: 'Intern-School',
+      message: 'What is Interns School',
+    },
+   
+ 
+];
+
 //
 function writeToFile(fileName, data) {
     return fs.writeFileSync(path.join(process.cwd(), fileName), data);
