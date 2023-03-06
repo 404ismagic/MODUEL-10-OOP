@@ -82,7 +82,6 @@ const internQuestions = [
       message: 'What is Interns School',
     },
    
- 
 ];
 
 //
@@ -90,6 +89,21 @@ function writeToFile(fileName, data) {
     return fs.writeFileSync(path.join(process.cwd(), fileName), data);
 }
 
+function addEngineer () {
+  inquirer.prompt ( engruestions).then (resp => {
+    let engineer = new Engineer(resp.Engineer-Name,resp.Engineer-ID, resp.Engineer-Email, resp.Engieer-Gihub);
+    team.push(engineer);
+    addTeamMembers();
+  });
+}
+
+function addIntern () {
+  inquirer.prompt ( internQuestions).then (resp => {
+    let intern = new Intern(resp.Intern-Name,resp.Intern-ID, resp.Intern-Email, resp.Intern-School);
+    team.push(intern);
+    addTeamMembers();
+  });
+}
 function addTeamMembers()
 {
   inquirer.prompt ([ {
