@@ -85,8 +85,13 @@ const internQuestions = [
 ];
 
 //
-function writeToFile(fileName, data) {
-    return fs.writeFileSync(path.join(process.cwd(), fileName), data);
+function createTeam() {
+    let out_dir = path.resolve(__dirname, "dist");
+    let outputpath = path.join(out_dir, "team.html");
+    if (!fs.existsSync(out_dir)){
+      fs.mkdirSync)out_dir);
+    }
+    fs.writeFileSync(outputPath, genHTML(team,'utf-8');
 }
 
 function addEngineer () {
