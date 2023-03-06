@@ -40,11 +40,40 @@ function writeToFile(fileName, data) {
     return fs.writeFileSync(path.join(process.cwd(), fileName), data);
 }
 
+function addTeamMembers()
+{
+  inquirer.prompt ([ {
+    type: "list",
+    name: "choice",
+    message:"who do you want to add to the team?",
+    choices: [ 
+      "Engineer",
+      "Intern",
+      "Done Adding, Create Team Page"
+    ]
+  }
+  ]). then ( userchoice  => {
+    switch ( userchoice.choice) {
+      case Engineer:
+        addEngineer();
+        break;
+      case Intern:
+        addIntern();
+        break;
+      default:
+        fs.createReadStream();
+        break;
+    }
+  })
+}
 // 
 function init() {
-    inquirer.prompt(questions).then ((userAnswers) => {
+    inquirer.prompt(mgrQuestions).then ((userAnswers) => {
         console.log( "userResponse = ", userAnswers);
-        writeToFile ( 'GeneratedReadMe.md', genMD({ ...userAnswers}));
+        let manager=new Manger (userAnswers.Manger-Name,userAnswers.Manger-ID,userAnswers.Manger-Email,userAnswers.Manger-Office-Number);
+        team.push (manager);
+        addTeamMembers();
+
     })
 }
 
