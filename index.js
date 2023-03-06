@@ -8,54 +8,31 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Employee = require('./lib/Employee');
 
+const team = [];
 // 
-const questions = [
+const mgrQuestions = [
     {
         type: 'input',
-        name: 'title',
-        message: 'What is your project title?',
+        name: 'Manger-Name',
+        message: 'What is Mangers Name',
       },
       {
         type: 'input',
-        name: 'description',
-        message: 'What is your  project description?',
+        name: 'Manger-ID',
+        message: 'What is your Mangers ID',
       },
       {
         type: 'input',
-        name: 'email',
-        message: 'What is your email?',
-      },
-      {
-        type: 'list',
-        name: 'license',
-        message: 'Choose a license for your project',
-        choices: ['APACHE_2.0', 'GPL 3.0' , 'BSD-3', 'MIT', 'None']
+        name: 'Manger-Email',
+        message: 'What is your mangers email?',
       },
       {
         type: 'input',
-        name: 'github',
-        message: 'What is your GitHub Username',
+        name: 'Manger-Office-Number',
+        message: 'What is Mangers Office Number',
       },
-      {
-        type: 'input',
-        name: 'installation',
-        message: 'What is the installation instruction for your project?',
-      },  
-      {
-        type: 'input',
-        name: 'contributing',
-        message: 'How to contribute to this project?',
-      },  
-      {
-        type: 'input',
-        name: 'usage',
-        message: 'What is the usage instruction for your project?',
-      }, 
-      {
-        type: 'input',
-        name: 'test',
-        message: 'What is the test instruction for your project?',
-      },   
+     
+   
 ];
 
 //
