@@ -2,7 +2,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const path = require('path');
-const genHTML = require('../src/generateHTML');
+const genHTML = require('./src/generateHTML');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
@@ -13,22 +13,22 @@ const team = [];
 const mgrQuestions = [
     {
         type: 'input',
-        name: 'Manger-Name',
+        name: 'MangerName',
         message: 'What is Mangers Name',
       },
       {
         type: 'input',
-        name: 'Manger-ID',
+        name: 'MangerID',
         message: 'What is your Mangers ID',
       },
       {
         type: 'input',
-        name: 'Manger-Email',
+        name: 'MangerEmail',
         message: 'What is your mangers email?',
       },
       {
         type: 'input',
-        name: 'Manger-Office-Number',
+        name: 'MangerOfficeNumber',
         message: 'What is Mangers Office Number',
       },
      
@@ -38,22 +38,22 @@ const mgrQuestions = [
 const engruestions = [
   {
       type: 'input',
-      name: 'Engineer-Name',
+      name: 'EngineerName',
       message: 'What is Engineers Name',
     },
     {
       type: 'input',
-      name: 'Engineer-ID',
+      name: 'EngineerID',
       message: 'What is your Engineers ID',
     },
     {
       type: 'input',
-      name: 'Engineer-Email',
+      name: 'EngineerEmail',
       message: 'What is your Engineers email?',
     },
     {
       type: 'input',
-      name: 'Engineer-Github',
+      name: 'EngineerGithub',
       message: 'What is Engineers Github',
     },
    
@@ -63,22 +63,22 @@ const engruestions = [
 const internQuestions = [
   {
       type: 'input',
-      name: 'Intern-Name',
+      name: 'InternName',
       message: 'What is Interns Name',
     },
     {
       type: 'input',
-      name: 'Intern-ID',
+      name: 'InternID',
       message: 'What is your Interns ID',
     },
     {
       type: 'input',
-      name: 'Intern-Email',
+      name: 'InternEmail',
       message: 'What is your Interns email?',
     },
     {
       type: 'input',
-      name: 'Intern-School',
+      name: 'InternSchool',
       message: 'What is Interns School',
     },
    
@@ -87,16 +87,16 @@ const internQuestions = [
 //
 function createTeam() {
     let out_dir = path.resolve(__dirname, "dist");
-    let outputpath = path.join(out_dir, "team.html");
+    let outputPath = path.join(out_dir, "team.html");
     if (!fs.existsSync(out_dir)){
-      fs.mkdirSync)out_dir);
+      fs.mkdirSync(out_dir);
     }
-    fs.writeFileSync(outputPath, genHTML(team,'utf-8');
+    fs.writeFileSync(outputPath, genHTML(team,'utf-8'));
 }
 
 function addEngineer () {
   inquirer.prompt ( engruestions).then (resp => {
-    let engineer = new Engineer(resp.Engineer-Name,resp.Engineer-ID, resp.Engineer-Email, resp.Engieer-Gihub);
+    let engineer = new Engineer(resp.EngineerName,resp.EngineerID, resp.EngineerEmail, resp.EngieerGihub);
     team.push(engineer);
     addTeamMembers();
   });
@@ -104,7 +104,7 @@ function addEngineer () {
 
 function addIntern () {
   inquirer.prompt ( internQuestions).then (resp => {
-    let intern = new Intern(resp.Intern-Name,resp.Intern-ID, resp.Intern-Email, resp.Intern-School);
+    let intern = new Intern(resp.InternName,resp.InternID, resp.InternEmail, resp.InternSchool);
     team.push(intern);
     addTeamMembers();
   });
@@ -123,10 +123,10 @@ function addTeamMembers()
   }
   ]). then ( userchoice  => {
     switch ( userchoice.choice) {
-      case Engineer:
+      case "Engineer":
         addEngineer();
         break;
-      case Intern:
+      case "Intern":
         addIntern();
         break;
       default:
@@ -139,7 +139,13 @@ function addTeamMembers()
 function init() {
     inquirer.prompt(mgrQuestions).then ((userAnswers) => {
         console.log( "userResponse = ", userAnswers);
-        let manager=new Manger (userAnswers.Manger-Name,userAnswers.Manger-ID,userAnswers.Manger-Email,userAnswers.Manger-Office-Number);
+        let manager=
+        new Manager (
+          userAnswers.MangerName,
+          userAnswers.MangerID,
+          userAnswers.MangerEmail,
+          userAnswers.MangerOfficeNumber
+          );
         team.push (manager);
         addTeamMembers();
 
