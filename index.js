@@ -9,31 +9,7 @@ const Intern = require('./lib/Intern');
 const Employee = require('./lib/Employee');
 
 const team = [];
-// 
-const mgrQuestions = [
-    {
-        type: 'input',
-        name: 'MangerName',
-        message: 'What is Mangers Name',
-      },
-      {
-        type: 'input',
-        name: 'MangerID',
-        message: 'What is your Mangers ID',
-      },
-      {
-        type: 'input',
-        name: 'MangerEmail',
-        message: 'What is your mangers email?',
-      },
-      {
-        type: 'input',
-        name: 'MangerOfficeNumber',
-        message: 'What is Mangers Office Number',
-      },
-     
-   
-];
+
 
 const engruestions = [
   {
@@ -86,6 +62,8 @@ const internQuestions = [
 
 //
 function createTeam() {
+  console.log("createTeam");
+  console.log("team = ", team);
     let out_dir = path.resolve(__dirname, "dist");
     let outputPath = path.join(out_dir, "team.html");
     if (!fs.existsSync(out_dir)){
@@ -98,7 +76,7 @@ function addEngineer () {
   inquirer.prompt ( engruestions).then (resp => {
     let engineer = new Engineer(resp.EngineerName,resp.EngineerID, resp.EngineerEmail, resp.EngieerGihub);
     team.push(engineer);
-    addTeamMembers();
+    addMembersToTeamRoster();
   });
 }
 
@@ -106,10 +84,10 @@ function addIntern () {
   inquirer.prompt ( internQuestions).then (resp => {
     let intern = new Intern(resp.InternName,resp.InternID, resp.InternEmail, resp.InternSchool);
     team.push(intern);
-    addTeamMembers();
+    addMembersToTeamRoster();
   });
 }
-function addTeamMembers()
+function addMembersToTeamRoster()
 {
   inquirer.prompt ([ {
     type: "list",
@@ -136,21 +114,44 @@ function addTeamMembers()
   })
 }
 // 
-function init() {
-    inquirer.prompt(mgrQuestions).then ((userAnswers) => {
+// Start here with asking about manager questions
+    inquirer.prompt(
+    [  {
+        type: 'input',
+        name: 'name',
+        message: "What is the team's manger Name?",
+      },
+      {
+        type: 'input',
+        name: 'id',
+        message: "What is team's  manger's ID"
+      },
+      {
+        type: 'input',
+        name: 'email',
+        message: "What is the team manager's email?",
+      },
+      {
+        type: 'input',
+        name: 'officeNumber',
+        message: "What is the team manager's Office Number",
+      },
+     
+   
+]      
+    ).then ((userAnswers) => {
         console.log( "userResponse = ", userAnswers);
         let manager=
         new Manager (
-          userAnswers.MangerName,
-          userAnswers.MangerID,
-          userAnswers.MangerEmail,
-          userAnswers.MangerOfficeNumber
+          userAnswers.name,
+          userAnswers.id,
+          userAnswers.email,
+          userAnswers.officeNumber
           );
         team.push (manager);
-        addTeamMembers();
+        addMembersToTeamRoster();
 
-    })
-}
+    });
 
-// Function call to initialize app
-init();
+
+
