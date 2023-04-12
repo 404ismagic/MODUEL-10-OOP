@@ -11,26 +11,26 @@ const Employee = require('./lib/Employee');
 const team = [];
 
 
-const engruestions = [
+const engrQestions = [
   {
       type: 'input',
-      name: 'EngineerName',
-      message: 'What is Engineers Name',
+      name: 'engineerName',
+      message: 'What is engineers Name',
     },
     {
       type: 'input',
-      name: 'EngineerID',
-      message: 'What is your Engineers ID',
+      name: 'engineerID',
+      message: 'What is your engineers ID',
     },
     {
       type: 'input',
-      name: 'EngineerEmail',
-      message: 'What is your Engineers email?',
+      name: 'engineerEmail',
+      message: 'What is your engineers email?',
     },
     {
       type: 'input',
-      name: 'EngineerGithub',
-      message: 'What is Engineers Github',
+      name: 'engineerGithub',
+      message: 'What is engineers Github',
     },
    
  
@@ -39,23 +39,23 @@ const engruestions = [
 const internQuestions = [
   {
       type: 'input',
-      name: 'InternName',
+      name: 'internName',
       message: 'What is Interns Name',
     },
     {
       type: 'input',
-      name: 'InternID',
-      message: 'What is your Interns ID',
+      name: 'internID',
+      message: "What is your Intern's ID?",
     },
     {
       type: 'input',
-      name: 'InternEmail',
-      message: 'What is your Interns email?',
+      name: 'internEmail',
+      message: "What is your Intern's email?",
     },
     {
       type: 'input',
-      name: 'InternSchool',
-      message: 'What is Interns School',
+      name: 'internSchool',
+      message: "What is intern's School",
     },
    
 ];
@@ -73,8 +73,8 @@ function createTeam() {
 }
 
 function addEngineer () {
-  inquirer.prompt ( engruestions).then (resp => {
-    let engineer = new Engineer(resp.EngineerName,resp.EngineerID, resp.EngineerEmail, resp.EngieerGihub);
+  inquirer.prompt ( engrQuestions).then (resp => {
+    let engineer = new Engineer(resp.engineerName,resp.engineerID, resp.engineerEmail, resp.engieerGihub);
     team.push(engineer);
     addMembersToTeamRoster();
   });
@@ -82,7 +82,7 @@ function addEngineer () {
 
 function addIntern () {
   inquirer.prompt ( internQuestions).then (resp => {
-    let intern = new Intern(resp.InternName,resp.InternID, resp.InternEmail, resp.InternSchool);
+    let intern = new Intern(resp.internName,resp.internID, resp.internEmail, resp.internSchool);
     team.push(intern);
     addMembersToTeamRoster();
   });
