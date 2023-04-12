@@ -7,12 +7,14 @@ const generateTeam = (team) => {
         let managerHtml = ` 
         <div class="card" style="width: 18rem;">
             <div class="card-header">
-           ${m.name} <br/>
+           <h3> ${m.getName()} </h3>
+           <h4 class="fas fas-mug-hot"> ${m.getRole()} </h4> <br/>
+           <br/>
            <i class="fas fa-mug-hot"></i>Manager</div>
            <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${m.id}</li>
-            <li class="list-group-item">Email: <span id="email"><a href="mailto:${m.email}">${m.email}</a></span></li>
-            <li class="list-group-item">Office Number: ${m.officeNumber}</li>
+            <li class="list-group-item">ID: ${m.getId()}</li>
+            <li class="list-group-item">Email: <span id="email"><a href="mailto:${m.getEmail()}">${m.getEmail()}</a></span></li>
+            <li class="list-group-item">Office Number: ${m.getOfficeNumber()}</li>
             </ul>
         </div>
         `;
@@ -23,11 +25,12 @@ const generateTeam = (team) => {
         let engineerHtml = ` 
         <div class="card" style="width: 18rem;">
             <div class="card-header">
-           ${e.name} <br/>
-           <i class="fas fa-glasses"></i>Engineer</div>
+           <h3 >${e.getName()} <h3>
+           <h4 class="fas fa-user-glasses"> ${e.getRole()} </h4> <br/>
+           <br/>
            <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${e.id}</li>
-            <li class="list-group-item">Email: <span id="email"><a href="mailto:${e.email}">${e.email}</a></span></li>
+            <li class="list-group-item">ID: ${e.getId()}</li>
+            <li class="list-group-item">Email: <span id="email"><a href="mailto:${e.getEmail()}">${e.getEmail()}</a></span></li>
             <li class="list-group-item">Github Username: <a target="_blank" href="https://github.com/${e.githubUsername}">${e.githubUsername}</a></li>
             </ul>
         </div>
@@ -38,13 +41,16 @@ const generateTeam = (team) => {
         console.log(i);
         let internHtml = ` 
         <div class="card" style="width: 18rem;">
-            <div class="card-header">
-           ${i.name} <br/>
-           <i class="fas fa-user-graduate"></i>Intern</div>
+
+        <div class="card-header">
+           <h3 >${i.getName()} </h3>
+           <h4 class="fas fa-user-graduate"> ${i.getRole()} </h4> <br/>
+           </div>
+    
            <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${i.id}</li>
-            <li class="list-group-item">Email: <span id="email"><a href="mailto:${i.email}">${i.email}</a></span></li>
-            <li class="list-group-item">School: ${i.school}</li>
+            <li class="list-group-item">ID: ${i.getId()}</li>
+            <li class="list-group-item">Email: <span ><a href="mailto:${i.getEmail()}">${i.getEmail()}</a></span></li>
+            <li class="list-group-item">School: ${i.getSchool()}</li>
             </ul>
         </div>
         `;

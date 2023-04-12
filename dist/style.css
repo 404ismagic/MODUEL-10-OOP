@@ -22,7 +22,7 @@ main{
 }
 
 .card-header {
-    color: white;
+    /* color: white; */
     background-color: rgba(244, 244, 244, 0.584);
 
 }
